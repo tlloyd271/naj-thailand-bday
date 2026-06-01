@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thailand — A Birthday Journey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A96E;
+    --gold-light: #E8D5B0;
+    --ivory: #FAF7F2;
+    --dark: #1A1410;
+    --sage: #7A8C6E;
+    --sage-light: #B8C9A8;
+    --teal: #4A8B8C;
+    --teal-light: #A8D5D6;
+    --pink: #C4788A;
+    --pink-light: #F0C5CE;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--dark); color: var(--ivory); overflow-x: hidden; }
+
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(26,20,16,0.94); backdrop-filter: blur(12px); border-bottom: 0.5px solid rgba(201,169,110,0.2); padding: 0 2rem; }
+  .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: var(--gold); font-weight: 300; }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+  .nav-links a { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(250,247,242,0.45); text-decoration: none; transition: color 0.2s; font-weight: 400; }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; padding: 2rem; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(201,169,110,0.18) 0%, transparent 70%), radial-gradient(ellipse 40% 30% at 20% 20%, rgba(74,139,140,0.12) 0%, transparent 60%), radial-gradient(ellipse 30% 25% at 80% 15%, rgba(196,120,138,0.1) 0%, transparent 60%); }
+  .hero-pattern { position: absolute; inset: 0; background-image: repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(201,169,110,0.04) 60px), repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(201,169,110,0.04) 60px); pointer-events: none; }
+  .hero-content { position: relative; z-index: 2; }
+  .hero-eyebrow { font-size: 11px; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 1s ease 0.3s forwards; }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(4rem, 12vw, 9rem); font-weight: 300; line-height: 0.9; color: var(--ivory); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 1s ease 0.5s forwards; }
+  .hero-title em { font-style: italic; color: var(--gold); }
+  .hero-subtitle { font-family: 'Cormorant Garamond', serif; font-size: clamp(1rem, 2.5vw, 1.4rem); font-weight: 300; font-style: italic; color: rgba(250,247,242,0.6); margin-bottom: 3rem; opacity: 0; animation: fadeUp 1s ease 0.7s forwards; }
+  .hero-meta { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; opacity: 0; animation: fadeUp 1s ease 0.9s forwards; }
+  .hero-meta-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .hero-meta-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 400; }
+  .hero-meta-value { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; color: var(--ivory); }
+  .hero-carissa { opacity: 0; animation: fadeUp 1s ease 1.1s forwards; margin-top: 2rem; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(196,120,138,0.65); font-weight: 400; }
+  .hero-carissa span { color: var(--pink); }
+  .hero-divider { width: 1px; height: 40px; background: linear-gradient(to bottom, transparent, var(--gold), transparent); opacity: 0; animation: fadeIn 1.5s ease 1.3s forwards; margin: 2.5rem auto 0; }
+  .scroll-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(201,169,110,0.5); opacity: 0; animation: fadeIn 2s ease 1.5s forwards; }
+
+  /* PHOTO STRIPS */
+  .photo-strip { width: 100%; overflow: hidden; }
+  .photo-row { display: flex; gap: 4px; height: 340px; }
+  .photo-row.tall { height: 440px; }
+  .photo-cell { flex: 1; overflow: hidden; position: relative; min-width: 0; }
+  .photo-cell.wide { flex: 2; }
+  .photo-cell img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.82) saturate(0.88); transition: filter 0.5s, transform 0.6s; }
+  .photo-cell:hover img { filter: brightness(0.95) saturate(1.05); transform: scale(1.04); }
+  .photo-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 0.75rem 1rem; background: linear-gradient(to top, rgba(26,20,16,0.75), transparent); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(250,247,242,0.6); font-weight: 400; }
+
+  /* OVERVIEW STRIP */
+  .overview-strip { background: rgba(201,169,110,0.07); border-top: 0.5px solid rgba(201,169,110,0.2); border-bottom: 0.5px solid rgba(201,169,110,0.2); padding: 3rem 2rem; }
+  .overview-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 2rem; text-align: center; }
+  .overview-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 0.25rem; }
+  .overview-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(250,247,242,0.4); font-weight: 400; }
+
+  /* CITY CHAPTERS */
+  .city-chapter { padding: 6rem 2rem; position: relative; overflow: hidden; }
+  .city-chapter::before { content: attr(data-city); position: absolute; top: 50%; right: -2rem; transform: translateY(-50%) rotate(90deg); font-family: 'Cormorant Garamond', serif; font-size: clamp(6rem, 15vw, 12rem); font-weight: 300; color: rgba(201,169,110,0.04); pointer-events: none; white-space: nowrap; }
+  .chapter-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+  .chapter-header { display: grid; grid-template-columns: 1fr auto; align-items: end; margin-bottom: 3rem; gap: 2rem; }
+  .chapter-badge { display: inline-flex; align-items: center; padding: 6px 14px; border: 0.5px solid rgba(201,169,110,0.3); border-radius: 2px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 400; margin-bottom: 1rem; }
+  .chapter-dates { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; color: rgba(250,247,242,0.4); }
+  .chapter-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 300; line-height: 0.95; color: var(--ivory); }
+  .chapter-title em { font-style: italic; }
+  .chapter-vibe { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300; font-style: italic; color: rgba(250,247,242,0.4); }
+
+  /* DAYS */
+  .days-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1px; border: 0.5px solid rgba(201,169,110,0.15); border-radius: 4px; overflow: hidden; margin-bottom: 2.5rem; }
+  .day-card { background: rgba(250,247,242,0.02); padding: 1.5rem; transition: background 0.3s; border: 0.5px solid rgba(201,169,110,0.1); }
+  .day-card:hover { background: rgba(201,169,110,0.06); }
+  .day-card.birthday-card { background: rgba(196,120,138,0.07); border-color: rgba(196,120,138,0.3); }
+  .day-card.birthday-card:hover { background: rgba(196,120,138,0.12); }
+  .birthday-flag { display: inline-flex; align-items: center; background: rgba(196,120,138,0.2); border: 0.5px solid rgba(196,120,138,0.4); padding: 3px 10px; border-radius: 2px; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #F0C5CE; margin-bottom: 0.75rem; font-weight: 400; }
+  .day-number { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(201,169,110,0.5); margin-bottom: 0.5rem; font-weight: 400; }
+  .day-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400; color: var(--ivory); margin-bottom: 1rem; line-height: 1.2; }
+  .activity-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .activity-item { display: flex; gap: 10px; align-items: flex-start; }
+  .activity-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+  .dot-animal { background: var(--sage); }
+  .dot-food { background: var(--gold); }
+  .dot-romance { background: var(--pink); }
+  .dot-culture { background: var(--teal); }
+  .dot-nature { background: var(--sage-light); }
+  .activity-text { font-size: 13px; color: rgba(250,247,242,0.6); line-height: 1.5; font-weight: 300; }
+
+  /* MISC */
+  .highlight-box { border-left: 1px solid var(--gold); padding: 1.25rem 1.5rem; background: rgba(201,169,110,0.05); margin: 1.5rem 0; }
+  .highlight-title { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; font-weight: 400; }
+  .highlight-text { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 300; font-style: italic; color: rgba(250,247,242,0.7); line-height: 1.6; }
+  .legend { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; padding: 1rem 1.25rem; border: 0.5px solid rgba(201,169,110,0.1); border-radius: 4px; background: rgba(201,169,110,0.03); }
+  .legend-item { display: flex; align-items: center; gap: 7px; font-size: 11px; color: rgba(250,247,242,0.4); font-weight: 300; }
+  .legend-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .weather-banner { background: rgba(74,139,140,0.08); border: 0.5px solid rgba(74,139,140,0.2); border-radius: 4px; padding: 1.25rem 1.5rem; display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 2rem; }
+  .weather-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .weather-content h4 { font-size: 12px; font-weight: 500; color: var(--teal-light); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+  .weather-content p { font-size: 12px; color: rgba(250,247,242,0.5); line-height: 1.6; font-weight: 300; }
+  .line-divider { border: none; border-top: 0.5px solid rgba(201,169,110,0.1); margin: 0; }
+  section { max-width: 1100px; margin: 0 auto; padding: 6rem 2rem; }
+  .section-eyebrow { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; font-weight: 400; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; color: var(--ivory); margin-bottom: 2rem; }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  /* BIRTHDAY */
+  .birthday-section { background: linear-gradient(135deg, rgba(196,120,138,0.08) 0%, rgba(201,169,110,0.06) 100%); border-top: 0.5px solid rgba(196,120,138,0.2); border-bottom: 0.5px solid rgba(196,120,138,0.2); padding: 6rem 2rem; }
+  .birthday-inner { max-width: 1100px; margin: 0 auto; }
+  .birthday-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 3rem; }
+  .birthday-details { display: flex; flex-direction: column; gap: 1.5rem; }
+  .bday-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .bday-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; color: rgba(196,120,138,0.5); line-height: 1; min-width: 2.5rem; text-align: center; }
+  .bday-text h3 { font-size: 14px; font-weight: 500; color: var(--ivory); margin-bottom: 4px; }
+  .bday-text p { font-size: 13px; color: rgba(250,247,242,0.5); line-height: 1.6; font-weight: 300; }
+  .birthday-quote { border: 0.5px solid rgba(196,120,138,0.25); padding: 2.5rem; border-radius: 4px; position: relative; }
+  .birthday-quote::before { content: '"'; position: absolute; top: -1rem; left: 1.5rem; font-family: 'Cormorant Garamond', serif; font-size: 5rem; color: rgba(196,120,138,0.3); line-height: 1; }
+  .birthday-quote p { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; font-style: italic; color: rgba(250,247,242,0.7); line-height: 1.6; }
+  .birthday-quote footer { margin-top: 1.5rem; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(196,120,138,0.5); font-weight: 400; }
+
+  /* HOTELS */
+  .hotels-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+  .hotel-card { padding: 1.75rem; border: 0.5px solid rgba(201,169,110,0.15); border-radius: 4px; transition: border-color 0.3s; }
+  .hotel-card:hover { border-color: rgba(201,169,110,0.4); }
+  .hotel-city { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; font-weight: 400; }
+  .hotel-name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; color: var(--ivory); margin-bottom: 0.5rem; }
+  .hotel-type { font-size: 12px; color: rgba(250,247,242,0.4); font-style: italic; font-weight: 300; margin-bottom: 1rem; }
+  .hotel-why { font-size: 12px; color: rgba(250,247,242,0.55); line-height: 1.6; font-weight: 300; }
+
+  /* TIPS */
+  .tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+  .tip-card { padding: 1.5rem; background: rgba(250,247,242,0.02); border: 0.5px solid rgba(250,247,242,0.08); border-radius: 4px; }
+  .tip-icon { font-size: 1.2rem; margin-bottom: 0.75rem; }
+  .tip-title { font-size: 13px; font-weight: 500; color: var(--ivory); margin-bottom: 6px; }
+  .tip-body { font-size: 12px; color: rgba(250,247,242,0.5); line-height: 1.65; font-weight: 300; }
+
+  /* PACKING */
+  .packing-section { padding: 6rem 2rem; }
+  .packing-inner { max-width: 1100px; margin: 0 auto; }
+  .outfit-tabs { display: flex; gap: 0; margin-bottom: 2.5rem; border: 0.5px solid rgba(201,169,110,0.2); border-radius: 4px; overflow: hidden; flex-wrap: wrap; }
+  .outfit-tab { flex: 1; min-width: 120px; padding: 0.75rem 1rem; text-align: center; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; color: rgba(250,247,242,0.4); cursor: pointer; background: transparent; border: none; border-right: 0.5px solid rgba(201,169,110,0.15); transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+  .outfit-tab:last-child { border-right: none; }
+  .outfit-tab.active { background: rgba(201,169,110,0.12); color: var(--gold); }
+  .outfit-tab:hover:not(.active) { background: rgba(250,247,242,0.03); color: rgba(250,247,242,0.6); }
+  .outfit-panel { display: none; }
+  .outfit-panel.active { display: block; }
+  .outfit-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+  .outfit-card { border: 0.5px solid rgba(201,169,110,0.15); border-radius: 4px; overflow: hidden; transition: border-color 0.3s; }
+  .outfit-card:hover { border-color: rgba(201,169,110,0.35); }
+  .outfit-img { width: 100%; height: 240px; object-fit: cover; display: block; filter: brightness(0.85) saturate(0.85); transition: filter 0.3s; }
+  .outfit-card:hover .outfit-img { filter: brightness(0.95) saturate(1); }
+  .outfit-info { padding: 1.25rem; }
+  .outfit-occasion { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; font-weight: 400; }
+  .outfit-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; color: var(--ivory); margin-bottom: 8px; }
+  .outfit-desc { font-size: 12px; color: rgba(250,247,242,0.5); line-height: 1.6; font-weight: 300; }
+  .outfit-items { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px; }
+  .outfit-pill { font-size: 10px; padding: 3px 9px; border: 0.5px solid rgba(201,169,110,0.2); border-radius: 20px; color: rgba(250,247,242,0.45); }
+  .pack-list-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+  .pack-category { padding: 1.5rem; border: 0.5px solid rgba(201,169,110,0.12); border-radius: 4px; }
+  .pack-cat-title { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; font-weight: 400; }
+  .pack-items { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .pack-item { font-size: 13px; color: rgba(250,247,242,0.6); line-height: 1.4; font-weight: 300; display: flex; align-items: flex-start; gap: 8px; cursor: pointer; user-select: none; }
+  .pack-check { width: 14px; height: 14px; border: 0.5px solid rgba(201,169,110,0.35); border-radius: 2px; flex-shrink: 0; margin-top: 2px; transition: all 0.15s; display: flex; align-items: center; justify-content: center; }
+  .pack-item.checked .pack-check { background: var(--gold); border-color: var(--gold); }
+  .pack-item.checked .pack-check::after { content: '✓'; font-size: 9px; color: var(--dark); font-weight: 500; }
+  .pack-item.checked span { text-decoration: line-through; color: rgba(250,247,242,0.25); }
+  .climate-note { background: rgba(122,140,110,0.08); border: 0.5px solid rgba(122,140,110,0.2); border-radius: 4px; padding: 1.25rem 1.5rem; margin-bottom: 2rem; }
+  .climate-note h4 { font-size: 12px; font-weight: 500; color: var(--sage-light); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .climate-note p { font-size: 12px; color: rgba(250,247,242,0.5); line-height: 1.6; font-weight: 300; }
+
+  /* FOOTER */
+  footer { border-top: 0.5px solid rgba(201,169,110,0.15); padding: 3rem 2rem; text-align: center; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; font-weight: 300; color: rgba(250,247,242,0.4); margin-bottom: 0.75rem; }
+  .footer-carissa { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(196,120,138,0.55); margin-bottom: 0.5rem; }
+  .footer-carissa span { color: var(--pink); }
+  .footer-sub { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(201,169,110,0.3); font-weight: 400; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 700px) {
+    .birthday-grid { grid-template-columns: 1fr; }
+    .chapter-header { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .photo-row { height: 200px; }
+    .photo-row.tall { height: 260px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">A birthday journey · August 2026</p>
+    <h1 class="hero-title">Land of<br><em>Smiles</em></h1>
+    <p class="hero-subtitle">Ten days through Bangkok, Chiang Mai & Phuket —<br>celebrating a very special 32nd birthday</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span class="hero-meta-label">Destination</span><span class="hero-meta-value">Thailand</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Duration</span><span class="hero-meta-value">10 days</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Birthday</span><span class="hero-meta-value">August 9</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Milestone</span><span class="hero-meta-value">August 9</span></div>
+    </div>
+    
+    <div class="hero-divider"></div>
+  </div>
+  <p class="scroll-hint">Scroll to explore</p>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">Thailand · Birthday Journey</span>
+    <ul class="nav-links">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#bangkok">Bangkok</a></li>
+      <li><a href="#chiangmai">Chiang Mai</a></li>
+      <li><a href="#phuket">Phuket</a></li>
+      <li><a href="#birthday">Birthday</a></li>
+      <li><a href="#packing">Packing</a></li>
+      <li><a href="#tips">Tips</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO PHOTO STRIP -->
+<div class="photo-strip">
+  <div class="photo-row tall">
+    <div class="photo-cell wide">
+      <img src="https://images.pexels.com/photos/1659438/pexels-photo-1659438.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Thailand scenery" loading="lazy">
+      <div class="photo-caption">Thailand · Tropical shores</div>
+    </div>
+    <div class="photo-cell">
+      <img src="https://images.pexels.com/photos/247431/pexels-photo-247431.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Elephant sanctuary Chiang Mai" loading="lazy">
+      <div class="photo-caption">Elephant sanctuary · Chiang Mai</div>
+    </div>
+    <div class="photo-cell">
+      <img src="https://images.pexels.com/photos/2161449/pexels-photo-2161449.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Thai night market" loading="lazy">
+      <div class="photo-caption">Night market · Bangkok</div>
+    </div>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="overview-strip" id="overview">
+  <div class="overview-grid">
+    <div class="overview-item fade-in"><div class="overview-num">10</div><div class="overview-label">Days of adventure</div></div>
+    <div class="overview-item fade-in"><div class="overview-num">3</div><div class="overview-label">Cities</div></div>
+    <div class="overview-item fade-in"><div class="overview-num">1</div><div class="overview-label">Elephant sanctuary</div></div>
+    <div class="overview-item fade-in"><div class="overview-num">32</div><div class="overview-label">Birthday days</div></div>
+    <div class="overview-item fade-in"><div class="overview-num">∞</div><div class="overview-label">Memories made</div></div>
+  </div>
+</div>
+
+<!-- BANGKOK -->
+<div class="city-chapter" data-city="BANGKOK" id="bangkok">
+  <div class="chapter-inner">
+    <div class="chapter-header fade-in">
+      <div>
+        <div class="chapter-badge">01 — Bangkok</div>
+        <h2 class="chapter-title">The City<br><em>of Angels</em></h2>
+      </div>
+      <div style="text-align:right;">
+        <div class="chapter-dates">Days 1–3</div>
+        <div class="chapter-vibe">Street food capital + urban wildlife</div>
+      </div>
+    </div>
+    <div class="weather-banner fade-in">
+      <div class="weather-icon">🌦</div>
+      <div class="weather-content">
+        <h4>August in Bangkok</h4>
+        <p>Warm and humid with short afternoon rain bursts. Schedule outdoor activities in the morning, indoor experiences after lunch. Rain makes the temples and riverside even more atmospheric.</p>
+      </div>
+    </div>
+    <div class="legend fade-in">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--sage);"></div> Animal</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--gold);"></div> Food</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--pink);"></div> Romance</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--teal);"></div> Culture</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--sage-light);"></div> Nature</div>
+    </div>
+    <div class="days-grid fade-in">
+      <div class="day-card">
+        <div class="day-number">Day 1</div>
+        <div class="day-title">Arrival & Riverside</div>
+        <ul class="activity-list">
+          <li class="activity-item"><div class="activity-dot dot-romance"></div><span class="activity-text">Check into boutique riverside hotel — first glimpse of the Chao Phraya</span></li>
+          <li class="activity-item"><div class="activity-dot dot-food"></div><span class="activity-text">Easy street food dinner nearby — ease into the flavors gently</span></li>
+          <li class="activity-item"><div class="activity-dot dot-romance"></div><span class="activity-text">Evening stroll along the riverbank as the city lights up</span></li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-number">Day 2</div>
+        <div class="day-title">Animals & Chinatown</div>
+        <ul class="activity-list">
+          <li class="activity-item"><div class="activity-dot dot-animal"></div><span class="activity-text">Morning: Lumphini Park — giant monitor lizards roaming freely, very Thai and wonderful</span></li>
+          <li class="activity-item"><div class="activity-dot dot-animal"></div><span class="activity-text">Afternoon: Bangkok Butterfly Garden & Insectarium — quiet, beautiful, totally underrated</span></li>
+          <li class="activity-item"><div class="activity-dot dot-food"></div><span class="activity-text">Evening: Guided street food tour through Chinatown (Yaowarat)</span></li>
+          <li class="activity-item"><div class="activity-dot dot-food"></div><span class="activity-text">Jay Fai's legendary crab omelet — book ahead, worth the queue</span></li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-number">Day 3</div>
+        <div class="day-title">Floating Market & Night Out</div>
+        <ul class="activity-list">
+          <li class="activity-item"><div class="activity-dot dot-culture"></div><span class="activity-text">Early morning: Amphawa floating market — go at dawn before crowds</span></li>
+          <li class="activity-item"><div class="activity-dot dot-animal"></div><span class="activity-text">Afternoon: MOHU MOHU rescue cat café — cozy rainy afternoon ritual</span></li>
+          <li class="activity-item"><div class="activity-dot dot-food"></div><span class="activity-text">Thip Samai Pad Thai — a Bangkok institution worth every detour</span></li>
+          <li class="activity-item"><div class="activity-dot dot-romance"></div><span class="activity-text">Rooftop dinner over the Chao Phraya — great views, great food, perfect last night in Bangkok</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="highlight-box fade-in">
+      <div class="highlight-title">Skip without guilt</div>
+      <div class="highlight-text">Tiger temples, photo zoos, and crocodile shows exploit animals and offer nothing genuine. The wild encounters in this itinerary are far more memorable.</div>
+    </div>
+  </div>
+</div>
+
+<div class="photo-strip">
+  <div class="photo-row">
+    <div class="photo-cell">
+      <img src="https://images.pexels.com/photos/1007426/pexels-photo-1007426.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Bangkok temples" loading="lazy">
+      <div class="photo-caption">Bangkok · Temples at dusk</div>
+    </div>
+    <div class="photo-cell wide">
+      <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Thai street food" loading="lazy">
+      <div class="photo-caption">Chinatown · Yaowarat street food</div>
+    </div>
+    <div class="photo-cell">
+      <img src="https://images.pexels.com/photos/2237970/pexels-photo-2237970.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Floating market" loading="lazy">
+      <div class="photo-caption">Amphawa · Floating market</div>
+    </div>
+  </div>
+</div>
+
+<hr class="line-divider">
+
+<!-- CHIANG MAI -->
+<div class="city-chapter" data-city="CHIANG MAI" id="chiangmai">
+  <div class="chapter-inner">
+    <div class="chapter-header fade-in">
+      <div>
+        <div class="chapter-badge">02 — Chiang Mai</div>
+        <h2 class="chapter-title">Mountains,<br><em>Elephants</em> & Slow Living</h2>
+      </div>
+      <div style="text-align:right;">
+        <div class="chapter-dates">Days 4–7</div>
+        <div class="chapter-vibe">The heart of this journey</div>
+      </div>
+    </div>
+    <div class="days-grid fade-in">
+      <div class="day-card">
+        <div class="day-number">Day 4</div>
+        <div class="day-title">Arrival in the North</div>
+        <ul class="activity-list">
+          <li class="activity-item"><div class="activity-dot dot-culture"></div><span class="activity-text">1-hour flight: Bangkok → Chiang Mai</span></li>
+          <li class="activity-item"><div class="activity-dot dot-culture"></div><span class="activity-text">Monk chat at Wat Chedi Luang — calm, meaningful cultural exchange</span></li>
+          <li class="activity-item"><div class="activity-dot dot-food"></div><span class="activity-text">First Khao Soi at Khao Soi Khun Yai — Northern Thai nirvana in a bowl</span></li>
+          <li class="activity-item"><div class="activity-dot dot-food"></div><span class="activity-text">Sunday Walking Street desserts if arriving on a Sunday</span></li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-number">Day 5</div>
+        <div class="day-title">The Elephant Day</div>
+        <ul class="activity-list">
+          <li class="activity-item"><div class="activity-dot dot-animal"></div><span class="activity-text">Full day at Elephant Nature Park — no riding, no chains. Feed, walk alongside, witness August mud baths in the rain</span></li>
+          <li class="activity-item"><div class="activity-dot dot-romance"></div><span class="activity-text">Evening: Mountain-view café date watching the hills in the mist</span></li>
+          <li class="activity-item"><div class="activity-dot dot-food"></div><span class="activity-text">Dinner at Huen Phen — traditional Northern Thai in a heritage setting</span></li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-number">Day 6</div>
+        <div class="day-title">Cook, Climb & Explore</div>
+        <ul class="activity-list">
+          <li class="activity-item"><div class="activity-dot dot-food"></div><span class="activity-text">Morning: Thai Farm Cooking School — market visit then learn 4–5 dishes from scratch</span></li>
+          <li class="activity-item"><div class="activity-dot dot-nature"></div><span class="activity-text">Afternoon: Sticky Waterfall (Bua Tong) — natural limestone you can actually walk straight up</span></li>
+          <li class="activity-item"><div class="activity-dot dot-food"></div><span class="activity-text">Night Bazaar: mango sticky rice, coconut pancakes, Thai dessert crawl</span></li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-number">Day 7</div>
+        <div class="day-title">Coffee & Fly South</div>
+        <ul class="activity-list">
+          <li class="activity-item"><div class="activity-dot dot-food"></div><span class="activity-text">Morning: Coffee hopping in the Old City — Chiang Mai has extraordinary specialty cafés</span></li>
+          <li class="activity-item"><div class="activity-dot dot-romance"></div><span class="activity-text">Elephant adoption certificate pickup — a rescued elephant named in the birthday girl's honour</span></li>
+          <li class="activity-item"><div class="activity-dot dot-nature"></div><span class="activity-text">Afternoon flight: Chiang Mai → Phuket, heading toward the birthday finale</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="highlight-box fade-in">
+      <div class="highlight-title">Ethical elephant note</div>
+      <div class="highlight-text">Elephant Nature Park is the gold standard — elephants live freely with no riding or performing. Book 6–8 weeks ahead. August rain makes the mud baths extra magical. Note: Panviman Spa Resort is in Mae Rim, roughly 30 minutes from the sanctuary — a beautiful setting to return to after the big day.</div>
+    </div>
+  </div>
+</div>
+
+<div class="photo-strip">
+  <div class="photo-row">
+    <div class="photo-cell wide">
+      <img src="https://images.pexels.com/photos/133393/pexels-photo-133393.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Elephants in Thailand" loading="lazy">
+      <div class="photo-caption">Elephant Nature Park · Chiang Mai</div>
+    </div>
+    <div class="photo-cell">
+      <img src="https://images.pexels.com/photos/1298684/pexels-photo-1298684.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tropical waterfall" loading="lazy">
+      <div class="photo-caption">Bua Tong · Sticky Waterfall</div>
+    </div>
+    <div class="photo-cell">
+      <img src="https://images.pexels.com/photos/1199960/pexels-photo-1199960.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Thai market food" loading="lazy">
+      <div class="photo-caption">Chiang Mai · Night Bazaar</div>
+    </div>
+  </div>
+</div>
+
+<hr class="line-divider">
+
+<!-- PHUKET -->
+<div class="city-chapter" data-city="PHUKET" id="phuket">
+  <div class="chapter-inner">
+    <div class="chapter-header fade-in">
+      <div>
+        <div class="chapter-badge">03 — Phuket</div>
+        <h2 class="chapter-title">Islands, Beaches<br>& <em>Birthday Magic</em></h2>
+      </div>
+      <div style="text-align:right;">
+        <div class="chapter-dates">Days 8–10</div>
+        <div class="chapter-vibe">The grand finale</div>
+      </div>
+    </div>
+    <div class="days-grid fade-in">
+      <div class="day-card">
+        <div class="day-number">Day 8</div>
+        <div class="day-title">Arrival & Sea kayaks</div>
+        <ul class="activity-list">
+          <li class="activity-item"><div class="activity-dot dot-romance"></div><span class="activity-text">Check into beachfront resort or hillside suite — home for the birthday</span></li>
+          <li class="activity-item"><div class="activity-dot dot-animal"></div><span class="activity-text">Sunset kayaking at Ao Yon Bay — calm water, sea kayaks, dramatic cliffs</span></li>
+          <li class="activity-item"><div class="activity-dot dot-food"></div><span class="activity-text">Beachfront seafood dinner at Nai Harn Beach — fresh grilled fish, prawns, Thai curry</span></li>
+        </ul>
+      </div>
+      <div class="day-card birthday-card">
+        <div class="birthday-flag">Her birthday — August 9</div>
+        <div class="day-number">Day 9</div>
+        <div class="day-title">The Perfect 32nd</div>
+        <ul class="activity-list">
+          <li class="activity-item"><div class="activity-dot dot-romance"></div><span class="activity-text">Morning: pool filled with orchids, frangipani & lotus — the whole group sets up her name in petals as a surprise</span></li>
+          <li class="activity-item"><div class="activity-dot dot-animal"></div><span class="activity-text">Chartered speedboat to Phi Phi Islands — snorkel Maya Bay, Pileh Lagoon, coral reefs & sea turtles (reef-safe sunscreen only)</span></li>
+          <li class="activity-item"><div class="activity-dot dot-romance"></div><span class="activity-text">Group speedboat to Phi Phi Islands — Maya Bay, Pileh Lagoon, coral reefs &amp; sea turtles</span></li>
+          <li class="activity-item"><div class="activity-dot dot-food"></div><span class="activity-text">Group beachfront birthday dinner — custom cake, candles, flowers, celebrate her turning 32</span></li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-number">Day 10</div>
+        <div class="day-title">Kata Beach & Final Day</div>
+        <ul class="activity-list">
+          <li class="activity-item"><div class="activity-dot dot-nature"></div><span class="activity-text">Morning: Kata Beach & Kata Noi — some of Thailand's most beautiful southern beaches</span></li>
+          <li class="activity-item"><div class="activity-dot dot-animal"></div><span class="activity-text">Observe (don't feed) the Kata Beach monkeys — they come right to you</span></li>
+          <li class="activity-item"><div class="activity-dot dot-food"></div><span class="activity-text">Thai dessert crawl: coconut ice cream, roti, pandan sweets</span></li>
+          <li class="activity-item"><div class="activity-dot dot-romance"></div><span class="activity-text">Sunset cruise from Promthep Cape — golden light over the Andaman Sea, one of Thailand's most famous views</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="photo-strip">
+  <div class="photo-row tall">
+    <div class="photo-cell">
+      <img src="https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Thailand beach" loading="lazy">
+      <div class="photo-caption">Phuket · Turquoise shores</div>
+    </div>
+    <div class="photo-cell wide">
+      <img src="https://images.pexels.com/photos/1174732/pexels-photo-1174732.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Thailand sea" loading="lazy">
+      <div class="photo-caption">Phi Phi Islands · Snorkeling reefs</div>
+    </div>
+    <div class="photo-cell">
+      <img src="https://images.pexels.com/photos/1007657/pexels-photo-1007657.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Phuket cliffs" loading="lazy">
+      <div class="photo-caption">Kata · Limestone cliffs</div>
+    </div>
+  </div>
+</div>
+
+<hr class="line-divider">
+
+<!-- BIRTHDAY -->
+<div class="birthday-section" id="birthday">
+  <div class="birthday-inner">
+    <p class="section-eyebrow">The main event</p>
+    <h2 class="section-title">Making August 9th<br><em>Incredible</em></h2>
+    <div class="birthday-grid">
+      <div class="birthday-details fade-in">
+        <div class="bday-item">
+          <div class="bday-num">1</div>
+          <div class="bday-text">
+            <h3>Coordinate the pool — 3–4 weeks early</h3>
+            <p>Email the Phuket resort concierge directly 3–4 weeks ahead. Request lotus, orchids, and frangipani floated in the pool with her name in petals on the deck. The group can all chip in — budget ~$40–70 USD total. Confirm setup time the night before.</p>
+          </div>
+        </div>
+        <div class="bday-item">
+          <div class="bday-num">2</div>
+          <div class="bday-text">
+            <h3>Elephant adoption certificate</h3>
+            <p>When booking Elephant Nature Park, ask about their adoption program. The group can gift a certificate with photos and updates about a specific rescued elephant in her name — have it framed locally in Chiang Mai before heading south.</p>
+          </div>
+        </div>
+        <div class="bday-item">
+          <div class="bday-num">3</div>
+          <div class="bday-text">
+            <h3>Group birthday setup</h3>
+            <p>Ask the resort to place a handwritten birthday card, tropical flowers, and a birthday cake in the room before the group arrives back from snorkeling. Everyone comes back to the surprise together.</p>
+          </div>
+        </div>
+        <div class="bday-item">
+          <div class="bday-num">4</div>
+          <div class="bday-text">
+            <h3>The birthday dinner</h3>
+            <p>Book a long table on the beach for the whole group. Most Phuket resorts arrange custom Thai birthday cakes with tropical flowers and fresh fruit beautifully — coordinate 3–4 weeks ahead.</p>
+          </div>
+        </div>
+      </div>
+      <div class="birthday-quote fade-in">
+        <p>Thailand in August is lush, warm, and full of life. She loves animals, food, and the sea — and this trip delivers all three in the most spectacular way. August 9 in Phuket is the day everything comes together: flowers in the water, the whole squad together on the beach, and something truly remarkable to celebrate.</p>
+        <footer>The 32nd birthday she always dreamed of</footer>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="line-divider">
+
+<!-- PACKING -->
+<div class="packing-section" id="packing">
+  <div class="packing-inner">
+    <p class="section-eyebrow">What to wear</p>
+    <h2 class="section-title" style="margin-bottom:1rem;">Packing for<br><em>Paradise</em></h2>
+    <p style="font-size:13px;color:rgba(250,247,242,0.5);margin-bottom:2rem;font-weight:300;max-width:600px;line-height:1.7;">Ten days, three climates — Bangkok's heat, Chiang Mai's breezy mountains, and Phuket's beach. Everything here is lightweight, packable, and beautiful. One carry-on is entirely doable.</p>
+
+    <div class="climate-note fade-in">
+      <h4>August climate guide</h4>
+      <p>Bangkok & Phuket: 30–34°C, humid. Chiang Mai: 25–30°C, slightly breezier. Rain arrives in short afternoon bursts — a light packable rain jacket or sarong is your best friend. Prioritize: linen, cotton, lightweight rayon. Avoid synthetics that trap heat.</p>
+    </div>
+
+    <div class="outfit-tabs fade-in">
+      <button class="outfit-tab active" onclick="showTab(event,'city')">City days</button>
+      <button class="outfit-tab" onclick="showTab(event,'sanctuary')">Sanctuary day</button>
+      <button class="outfit-tab" onclick="showTab(event,'beach')">Beach & sea</button>
+      <button class="outfit-tab" onclick="showTab(event,'evening')">Evenings</button>
+      <button class="outfit-tab" onclick="showTab(event,'checklist')">Full checklist</button>
+    </div>
+
+    <div class="outfit-panel active" id="tab-city">
+      <div class="outfit-grid fade-in">
+        <div class="outfit-card">
+          <img class="outfit-img" src="https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Linen outfit" loading="lazy">
+          <div class="outfit-info">
+            <div class="outfit-occasion">Bangkok · Day exploring</div>
+            <div class="outfit-name">The Linen Essential</div>
+            <div class="outfit-desc">Loose linen wide-leg trousers in white or sand with a tucked-in cotton cropped top. Breathable, stylish, and temple-appropriate. Flat sandals with ankle straps you can slip off easily at temple entrances.</div>
+            <div class="outfit-items"><span class="outfit-pill">Linen trousers</span><span class="outfit-pill">Cotton crop top</span><span class="outfit-pill">Flat sandals</span><span class="outfit-pill">Mini crossbody</span></div>
+          </div>
+        </div>
+        <div class="outfit-card">
+          <img class="outfit-img" src="https://images.pexels.com/photos/2058781/pexels-photo-2058781.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Sundress" loading="lazy">
+          <div class="outfit-info">
+            <div class="outfit-occasion">Floating market · Chinatown</div>
+            <div class="outfit-name">The Breezy Sundress</div>
+            <div class="outfit-desc">A midi wrap dress in a floral or tropical print — easy to move in, packs to nothing, and photographs beautifully at market stalls and canal-side. Bring a light cardigan for air-conditioned restaurants.</div>
+            <div class="outfit-items"><span class="outfit-pill">Wrap midi dress</span><span class="outfit-pill">Light cardigan</span><span class="outfit-pill">Block heel sandals</span><span class="outfit-pill">Straw hat</span></div>
+          </div>
+        </div>
+        <div class="outfit-card">
+          <img class="outfit-img" src="https://images.pexels.com/photos/1126993/pexels-photo-1126993.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Temple outfit" loading="lazy">
+          <div class="outfit-info">
+            <div class="outfit-occasion">Temples & monk chats</div>
+            <div class="outfit-name">The Temple Look</div>
+            <div class="outfit-desc">Shoulders and knees covered is required. A cotton midi skirt with a loose button-down you can tie at the waist once outside the temple is ideal — keeps cool while being completely respectful.</div>
+            <div class="outfit-items"><span class="outfit-pill">Cotton midi skirt</span><span class="outfit-pill">Loose button-down</span><span class="outfit-pill">Comfortable flats</span><span class="outfit-pill">Lightweight scarf</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outfit-panel" id="tab-sanctuary">
+      <div class="outfit-grid fade-in">
+        <div class="outfit-card">
+          <img class="outfit-img" src="https://images.pexels.com/photos/1021693/pexels-photo-1021693.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Outdoor outfit" loading="lazy">
+          <div class="outfit-info">
+            <div class="outfit-occasion">Elephant Nature Park · Full day</div>
+            <div class="outfit-name">The Sanctuary Set</div>
+            <div class="outfit-desc">Dark or earth-toned clothing — mud happens and it's wonderful. Loose-fit pants over shorts give better sun and mud protection. A moisture-wicking long-sleeve shirt keeps bugs at bay and is light enough for the heat.</div>
+            <div class="outfit-items"><span class="outfit-pill">Dark linen pants</span><span class="outfit-pill">Long-sleeve cotton tee</span><span class="outfit-pill">Closed toe sandals</span><span class="outfit-pill">Hair tie — essential</span></div>
+          </div>
+        </div>
+        <div class="outfit-card">
+          <img class="outfit-img" src="https://images.pexels.com/photos/1271619/pexels-photo-1271619.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Waterfall hike outfit" loading="lazy">
+          <div class="outfit-info">
+            <div class="outfit-occasion">Sticky Waterfall · Bua Tong</div>
+            <div class="outfit-name">The Waterfall Look</div>
+            <div class="outfit-desc">You will get wet and you will be climbing limestone — wear something you can move freely in. Quick-dry shorts with a swimsuit underneath are ideal. Water sandals with a grip sole are essential for climbing.</div>
+            <div class="outfit-items"><span class="outfit-pill">Quick-dry shorts</span><span class="outfit-pill">Swimsuit underneath</span><span class="outfit-pill">Grip sandals</span><span class="outfit-pill">Dry bag for phone</span></div>
+          </div>
+        </div>
+        <div class="outfit-card">
+          <img class="outfit-img" src="https://images.pexels.com/photos/2220316/pexels-photo-2220316.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Chiang Mai café outfit" loading="lazy">
+          <div class="outfit-info">
+            <div class="outfit-occasion">Chiang Mai cafés & market</div>
+            <div class="outfit-name">The Mountain Town Look</div>
+            <div class="outfit-desc">Chiang Mai has a creative, laid-back energy. A linen co-ord set in sage, terracotta, or dusty pink works beautifully against the Old City backdrop and photographs incredibly against the ancient walls.</div>
+            <div class="outfit-items"><span class="outfit-pill">Linen co-ord set</span><span class="outfit-pill">Platform sandals</span><span class="outfit-pill">Woven tote bag</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outfit-panel" id="tab-beach">
+      <div class="outfit-grid fade-in">
+        <div class="outfit-card">
+          <img class="outfit-img" src="https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Beach swimwear" loading="lazy">
+          <div class="outfit-info">
+            <div class="outfit-occasion">Phuket · Snorkeling day</div>
+            <div class="outfit-name">The Swim Look</div>
+            <div class="outfit-desc">A one-piece or bikini with a rash guard for snorkeling (reef-safe sunscreen is required but sun protection still matters). A sarong to wrap on the boat — essential for the wind. A wide-brim hat you can tie down.</div>
+            <div class="outfit-items"><span class="outfit-pill">One-piece or bikini</span><span class="outfit-pill">Rash guard</span><span class="outfit-pill">Sarong / pareo</span><span class="outfit-pill">Wide-brim hat</span><span class="outfit-pill">Reef-safe SPF 50</span></div>
+          </div>
+        </div>
+        <div class="outfit-card">
+          <img class="outfit-img" src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Beach day look" loading="lazy">
+          <div class="outfit-info">
+            <div class="outfit-occasion">Kata Beach · Day trip</div>
+            <div class="outfit-name">The Beach Day Coverup</div>
+            <div class="outfit-desc">A sheer button-down beach coverup or linen beach dress over your swimsuit. Easy to remove for a swim, easy to put back on for the long-tail boat. Looks put-together without any effort.</div>
+            <div class="outfit-items"><span class="outfit-pill">Sheer coverup dress</span><span class="outfit-pill">Flat beach sandals</span><span class="outfit-pill">Waterproof tote</span></div>
+          </div>
+        </div>
+        <div class="outfit-card">
+          <img class="outfit-img" src="https://images.pexels.com/photos/2220270/pexels-photo-2220270.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Resort casual" loading="lazy">
+          <div class="outfit-info">
+            <div class="outfit-occasion">Resort pool & Kata Noi afternoons</div>
+            <div class="outfit-name">The Resort Casual</div>
+            <div class="outfit-desc">Flowy shorts or a beach skirt with a breezy top. Works from pool to open-air restaurant without changing. Neutral tones or tropical prints both look stunning against Phuket's dramatic landscape.</div>
+            <div class="outfit-items"><span class="outfit-pill">Flowy beach shorts</span><span class="outfit-pill">Breezy cotton top</span><span class="outfit-pill">Slip-on sandals</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outfit-panel" id="tab-evening">
+      <div class="outfit-grid fade-in">
+        <div class="outfit-card">
+          <img class="outfit-img" src="https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Rooftop dinner look" loading="lazy">
+          <div class="outfit-info">
+            <div class="outfit-occasion">Bangkok · The Salil rooftop evening</div>
+            <div class="outfit-name">The Rooftop Look</div>
+            <div class="outfit-desc">A slip dress or fitted midi dress in a jewel tone — emerald, cobalt, or deep terracotta. Add strappy heeled sandals and gold jewelry. Bangkok rooftop restaurants are elevated environments and the city skyline deserves something special.</div>
+            <div class="outfit-items"><span class="outfit-pill">Midi slip dress</span><span class="outfit-pill">Strappy heeled sandals</span><span class="outfit-pill">Gold jewelry</span><span class="outfit-pill">Small clutch</span></div>
+          </div>
+        </div>
+        <div class="outfit-card">
+          <img class="outfit-img" src="https://images.pexels.com/photos/2220337/pexels-photo-2220337.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Birthday dress" loading="lazy">
+          <div class="outfit-info">
+            <div class="outfit-occasion">Phuket · Birthday beach dinner</div>
+            <div class="outfit-name">The Birthday Look</div>
+            <div class="outfit-desc">A white or soft blush maxi that's flowing and ethereal — something that photographs beautifully by the sea at sunset. White against a Phuket beach backdrop is ethereal. Delicate gold necklace, simple sandals.</div>
+            <div class="outfit-items"><span class="outfit-pill">White or blush maxi</span><span class="outfit-pill">Delicate gold jewelry</span><span class="outfit-pill">Strappy flat sandals</span><span class="outfit-pill">Woven clutch</span></div>
+          </div>
+        </div>
+        <div class="outfit-card">
+          <img class="outfit-img" src="https://images.pexels.com/photos/1055691/pexels-photo-1055691.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Market evening look" loading="lazy">
+          <div class="outfit-info">
+            <div class="outfit-occasion">Chiang Mai · Market evenings</div>
+            <div class="outfit-name">The Market Evening Look</div>
+            <div class="outfit-desc">A lightweight printed short dress or a playful co-ord that reads casual but vibrant. The Night Bazaar and Sunday Walking Street reward comfortable, stylish dressing. Bring a tote big enough for inevitable sticky rice and Thai silk finds.</div>
+            <div class="outfit-items"><span class="outfit-pill">Printed mini dress</span><span class="outfit-pill">Comfortable sandals</span><span class="outfit-pill">Large canvas tote</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outfit-panel" id="tab-checklist">
+      <div class="pack-list-grid fade-in">
+        <div class="pack-category">
+          <div class="pack-cat-title">Clothing</div>
+          <ul class="pack-items">
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>3–4 daytime dresses or tops + pants combos</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>1 temple-appropriate outfit (covered shoulders + knees)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>1 special birthday/evening dress (the white maxi)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>1 elevated evening outfit for The Salil</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>2 swimsuits or bikinis</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>1 rash guard (for snorkeling)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>1 packable rain jacket or poncho</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>1 light sarong / pareo (beach + temple coverage)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Dark/earth-toned clothes for elephant day</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Comfortable walking shorts</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>7 underwear + 3 bralettes / bras</span></li>
+          </ul>
+        </div>
+        <div class="pack-category">
+          <div class="pack-cat-title">Shoes</div>
+          <ul class="pack-items">
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Comfortable walking sandals (daily use)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Flat beach flip-flops</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Heeled sandals (rooftop + birthday dinner)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Grip sandals or water shoes (waterfall + snorkeling)</span></li>
+          </ul>
+        </div>
+        <div class="pack-category">
+          <div class="pack-cat-title">Sun & skin</div>
+          <ul class="pack-items">
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Reef-safe SPF 50 sunscreen (required for snorkeling)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Wide-brim sun hat</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>UV-protection sunglasses</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>After-sun lotion / aloe vera</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Insect repellent (DEET-free for the sanctuary)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Travel-size skincare routine</span></li>
+          </ul>
+        </div>
+        <div class="pack-category">
+          <div class="pack-cat-title">Accessories</div>
+          <ul class="pack-items">
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Gold jewelry — necklaces & earrings for evenings</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Hair ties + clips (many of them — heat humidity is real)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Waterproof beach bag or tote</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Small crossbody bag for city days</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Waterproof phone pouch (kayaking + waterfall)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Lightweight scarf (temples + cool restaurants)</span></li>
+          </ul>
+        </div>
+        <div class="pack-category">
+          <div class="pack-cat-title">Tech & travel</div>
+          <ul class="pack-items">
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Universal power adapter (Thailand: Type A/B/C)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Portable power bank</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Thai SIM or international roaming plan</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Underwater camera or GoPro</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Packing cubes</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Reusable water bottle</span></li>
+          </ul>
+        </div>
+        <div class="pack-category">
+          <div class="pack-cat-title">Health & pharmacy</div>
+          <ul class="pack-items">
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Prescription medications (bring extra)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Travel probiotics (helps with new food environments)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Anti-nausea tablets (boat trips)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Antihistamines</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Electrolyte sachets (humid heat dehydrates fast)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Small first aid kit</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="line-divider">
+
+<!-- HOTELS -->
+<hr class="line-divider">
+
+<!-- OUTFITS / PACKING -->
+<div class="packing-section" id="packing">
+  <div class="packing-inner">
+    <p class="section-eyebrow">What to wear</p>
+    <h2 class="section-title" style="margin-bottom:1rem;">Packing for<br><em>Paradise</em></h2>
+    <p style="font-size:13px;color:rgba(250,247,242,0.5);margin-bottom:2rem;font-weight:300;max-width:600px;line-height:1.7;">Ten days across three climates — Bangkok's heat, Chiang Mai's mountain air, and Phuket's beaches. Everything here is lightweight, packable, and beautiful. One carry-on is entirely doable.</p>
+
+    <div class="climate-note fade-in">
+      <h4>August climate guide</h4>
+      <p>Bangkok & Phuket: 30–34°C, humid. Chiang Mai: 25–30°C, breezy mountain air. Note: Panviman Spa Resort is in the mountains — evenings can be cooler. Rain arrives in short afternoon bursts everywhere — a light packable rain jacket or sarong is your best friend. Prioritize: linen, cotton, lightweight rayon. Avoid synthetics that trap heat.</p>
+    </div>
+
+    <div class="outfit-tabs fade-in">
+      <button class="outfit-tab active" onclick="showTab(event,'city')">City days</button>
+      <button class="outfit-tab" onclick="showTab(event,'sanctuary')">Sanctuary day</button>
+      <button class="outfit-tab" onclick="showTab(event,'beach')">Beach & sea</button>
+      <button class="outfit-tab" onclick="showTab(event,'evening')">Evenings</button>
+      <button class="outfit-tab" onclick="showTab(event,'checklist')">Full checklist</button>
+    </div>
+
+    <div class="outfit-panel active" id="tab-city">
+      <div class="outfit-grid fade-in">
+        <div class="outfit-card">
+          <img class="outfit-img" src="https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Linen outfit" loading="lazy">
+          <div class="outfit-info">
+            <div class="outfit-occasion">Bangkok · Exploring & temples</div>
+            <div class="outfit-name">The Linen Essential</div>
+            <div class="outfit-desc">Loose linen wide-leg trousers in white or sand with a tucked-in cotton crop top. Breathable, stylish, and temple-appropriate. Flat sandals you can slip off easily at temple entrances.</div>
+            <div class="outfit-items"><span class="outfit-pill">Linen trousers</span><span class="outfit-pill">Cotton crop top</span><span class="outfit-pill">Flat sandals</span><span class="outfit-pill">Mini crossbody</span></div>
+          </div>
+        </div>
+        <div class="outfit-card">
+          <img class="outfit-img" src="https://images.pexels.com/photos/2058781/pexels-photo-2058781.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Sundress" loading="lazy">
+          <div class="outfit-info">
+            <div class="outfit-occasion">Floating market · Chinatown</div>
+            <div class="outfit-name">The Breezy Sundress</div>
+            <div class="outfit-desc">A midi wrap dress in a floral or tropical print — packs to nothing and photographs beautifully at market stalls and canal-side. Light cardigan for air-conditioned restaurants.</div>
+            <div class="outfit-items"><span class="outfit-pill">Wrap midi dress</span><span class="outfit-pill">Light cardigan</span><span class="outfit-pill">Block heel sandals</span><span class="outfit-pill">Straw hat</span></div>
+          </div>
+        </div>
+        <div class="outfit-card">
+          <img class="outfit-img" src="https://images.pexels.com/photos/1126993/pexels-photo-1126993.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Temple outfit" loading="lazy">
+          <div class="outfit-info">
+            <div class="outfit-occasion">Temples · Monk chats · Panviman</div>
+            <div class="outfit-name">The Temple Look</div>
+            <div class="outfit-desc">Shoulders and knees covered is required at Thai temples. A cotton midi skirt with a loose button-down you can tie at the waist once outside. Also perfect for cooler mountain evenings at Panviman.</div>
+            <div class="outfit-items"><span class="outfit-pill">Cotton midi skirt</span><span class="outfit-pill">Loose button-down</span><span class="outfit-pill">Comfortable flats</span><span class="outfit-pill">Lightweight scarf</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outfit-panel" id="tab-sanctuary">
+      <div class="outfit-grid fade-in">
+        <div class="outfit-card">
+          <img class="outfit-img" src="https://images.pexels.com/photos/1021693/pexels-photo-1021693.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Outdoor outfit" loading="lazy">
+          <div class="outfit-info">
+            <div class="outfit-occasion">Elephant Nature Park · Full day</div>
+            <div class="outfit-name">The Sanctuary Set</div>
+            <div class="outfit-desc">Dark or earth-toned clothing — mud happens and it's wonderful. Loose-fit pants over shorts, a moisture-wicking long-sleeve shirt for sun and bug protection. August rain + elephant mud baths = pack clothes you don't mind ruining.</div>
+            <div class="outfit-items"><span class="outfit-pill">Dark linen pants</span><span class="outfit-pill">Long-sleeve cotton tee</span><span class="outfit-pill">Closed toe sandals</span><span class="outfit-pill">Hair tie — essential</span></div>
+          </div>
+        </div>
+        <div class="outfit-card">
+          <img class="outfit-img" src="https://images.pexels.com/photos/1271619/pexels-photo-1271619.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Waterfall hike outfit" loading="lazy">
+          <div class="outfit-info">
+            <div class="outfit-occasion">Sticky Waterfall · Bua Tong</div>
+            <div class="outfit-name">The Waterfall Look</div>
+            <div class="outfit-desc">You will get wet climbing limestone — quick-dry shorts and a swimsuit underneath are ideal. Grip sandals or water shoes are essential. Bring a dry bag for your phone.</div>
+            <div class="outfit-items"><span class="outfit-pill">Quick-dry shorts</span><span class="outfit-pill">Swimsuit underneath</span><span class="outfit-pill">Grip sandals</span><span class="outfit-pill">Dry bag for phone</span></div>
+          </div>
+        </div>
+        <div class="outfit-card">
+          <img class="outfit-img" src="https://images.pexels.com/photos/2220316/pexels-photo-2220316.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Spa resort outfit" loading="lazy">
+          <div class="outfit-info">
+            <div class="outfit-occasion">Panviman Spa Resort · Mountain days</div>
+            <div class="outfit-name">The Mountain Retreat Look</div>
+            <div class="outfit-desc">Panviman is cooler and more elevated than the city. A linen co-ord set in sage, terracotta, or dusty pink is perfect — elegant enough for the spa and restaurant, breezy enough for pool days and mountain walks.</div>
+            <div class="outfit-items"><span class="outfit-pill">Linen co-ord set</span><span class="outfit-pill">Platform sandals</span><span class="outfit-pill">Light wrap / kimono</span><span class="outfit-pill">Woven tote</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outfit-panel" id="tab-beach">
+      <div class="outfit-grid fade-in">
+        <div class="outfit-card">
+          <img class="outfit-img" src="https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Beach swimwear" loading="lazy">
+          <div class="outfit-info">
+            <div class="outfit-occasion">Phuket · Snorkeling & Phi Phi</div>
+            <div class="outfit-name">The Swim Look</div>
+            <div class="outfit-desc">One-piece or bikini with a rash guard for snorkeling (reef-safe sunscreen required but sun protection still matters). A sarong to wrap on the boat for the wind. Wide-brim hat you can tie down.</div>
+            <div class="outfit-items"><span class="outfit-pill">One-piece or bikini</span><span class="outfit-pill">Rash guard</span><span class="outfit-pill">Sarong / pareo</span><span class="outfit-pill">Wide-brim hat</span><span class="outfit-pill">Reef-safe SPF 50</span></div>
+          </div>
+        </div>
+        <div class="outfit-card">
+          <img class="outfit-img" src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Beach coverup" loading="lazy">
+          <div class="outfit-info">
+            <div class="outfit-occasion">Nai Harn Beach · Kata Noi</div>
+            <div class="outfit-name">The Beach Day Coverup</div>
+            <div class="outfit-desc">A sheer button-down beach coverup or linen beach dress over your swimsuit. Easy to slip off for a swim, easy to put back on for the boat. Looks effortlessly put-together with zero effort.</div>
+            <div class="outfit-items"><span class="outfit-pill">Sheer coverup dress</span><span class="outfit-pill">Flat beach sandals</span><span class="outfit-pill">Waterproof tote</span></div>
+          </div>
+        </div>
+        <div class="outfit-card">
+          <img class="outfit-img" src="https://images.pexels.com/photos/2220270/pexels-photo-2220270.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Resort casual" loading="lazy">
+          <div class="outfit-info">
+            <div class="outfit-occasion">Resort pool · The Nai Harn afternoons</div>
+            <div class="outfit-name">The Resort Casual</div>
+            <div class="outfit-desc">Flowy shorts or a beach skirt with a breezy cotton top. Works from pool deck to The Nai Harn's open-air restaurant without changing. Tropical prints look stunning against the Andaman backdrop.</div>
+            <div class="outfit-items"><span class="outfit-pill">Flowy beach shorts</span><span class="outfit-pill">Breezy cotton top</span><span class="outfit-pill">Slip-on sandals</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outfit-panel" id="tab-evening">
+      <div class="outfit-grid fade-in">
+        <div class="outfit-card">
+          <img class="outfit-img" src="https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Rooftop dinner look" loading="lazy">
+          <div class="outfit-info">
+            <div class="outfit-occasion">The Salil · Rooftop bar & riverside dinner</div>
+            <div class="outfit-name">The Riverside Evening Look</div>
+            <div class="outfit-desc">A slip dress or fitted midi in a jewel tone — emerald, cobalt, or deep terracotta. The Salil's rooftop cigar & whisky bar and riverside restaurants are elevated settings. Add strappy heeled sandals and gold jewelry.</div>
+            <div class="outfit-items"><span class="outfit-pill">Midi slip dress</span><span class="outfit-pill">Strappy heeled sandals</span><span class="outfit-pill">Gold jewelry</span><span class="outfit-pill">Small clutch</span></div>
+          </div>
+        </div>
+        <div class="outfit-card">
+          <img class="outfit-img" src="https://images.pexels.com/photos/2220337/pexels-photo-2220337.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Birthday dress" loading="lazy">
+          <div class="outfit-info">
+            <div class="outfit-occasion">Phuket · Birthday beach dinner</div>
+            <div class="outfit-name">The Birthday Look</div>
+            <div class="outfit-desc">A white or soft blush maxi — flowing and ethereal against a Phuket beach at sunset. Delicate gold necklace and simple strappy sandals. Beautiful and effortless.</div>
+            <div class="outfit-items"><span class="outfit-pill">White or blush maxi</span><span class="outfit-pill">Delicate gold jewelry</span><span class="outfit-pill">Strappy flat sandals</span><span class="outfit-pill">Woven clutch</span></div>
+          </div>
+        </div>
+        <div class="outfit-card">
+          <img class="outfit-img" src="https://images.pexels.com/photos/1055691/pexels-photo-1055691.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Market evening look" loading="lazy">
+          <div class="outfit-info">
+            <div class="outfit-occasion">Panviman · Panorama Restaurant evenings</div>
+            <div class="outfit-name">The Mountain Evening Look</div>
+            <div class="outfit-desc">Panviman's Panorama Restaurant has stunning mountain views — a lightweight printed short dress or elegant co-ord that reads effortless and polished. Bring a light wrap for cooler mountain evenings.</div>
+            <div class="outfit-items"><span class="outfit-pill">Printed dress or co-ord</span><span class="outfit-pill">Comfortable sandals</span><span class="outfit-pill">Light wrap for evenings</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outfit-panel" id="tab-checklist">
+      <div class="pack-list-grid fade-in">
+        <div class="pack-category">
+          <div class="pack-cat-title">Clothing</div>
+          <ul class="pack-items">
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>3–4 daytime dresses or tops + pants combos</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>1 temple-appropriate outfit (covered shoulders + knees)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>1 birthday maxi dress (white or blush)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>1 evening look for The Salil rooftop</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>2 swimsuits or bikinis</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>1 rash guard (snorkeling)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>1 packable rain jacket or poncho</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>1 light wrap / kimono (cooler Panviman evenings)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Dark earth-toned clothes for elephant sanctuary day</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>1 sarong / pareo (beach + temple coverage)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>7 underwear + 3 bralettes / bras</span></li>
+          </ul>
+        </div>
+        <div class="pack-category">
+          <div class="pack-cat-title">Shoes</div>
+          <ul class="pack-items">
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Comfortable walking sandals (daily use)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Flat beach flip-flops</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Heeled sandals (The Salil rooftop + birthday dinner)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Grip sandals or water shoes (Sticky Waterfall + snorkeling)</span></li>
+          </ul>
+        </div>
+        <div class="pack-category">
+          <div class="pack-cat-title">Sun & skin</div>
+          <ul class="pack-items">
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Reef-safe SPF 50 sunscreen (required for snorkeling)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Wide-brim sun hat</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>UV-protection sunglasses</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>After-sun lotion / aloe vera</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Insect repellent (DEET-free for the sanctuary)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Travel-size skincare routine</span></li>
+          </ul>
+        </div>
+        <div class="pack-category">
+          <div class="pack-cat-title">Accessories</div>
+          <ul class="pack-items">
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Gold jewelry — necklaces & earrings for evenings</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Hair ties + clips (many — humidity is relentless)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Waterproof beach bag or tote</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Small crossbody bag for city days</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Waterproof phone pouch (kayaking + waterfall)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Lightweight scarf (temples + cool Panviman evenings)</span></li>
+          </ul>
+        </div>
+        <div class="pack-category">
+          <div class="pack-cat-title">Tech & travel</div>
+          <ul class="pack-items">
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Universal power adapter (Thailand: Type A/B/C)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Portable power bank</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Thai SIM or international roaming plan</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Underwater camera or GoPro</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Packing cubes</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Reusable water bottle</span></li>
+          </ul>
+        </div>
+        <div class="pack-category">
+          <div class="pack-cat-title">Health & pharmacy</div>
+          <ul class="pack-items">
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Prescription medications (bring extra)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Travel probiotics (helps with new food environments)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Anti-nausea tablets (boat trips)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Antihistamines</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Electrolyte sachets (heat dehydrates fast)</span></li>
+            <li class="pack-item" onclick="toggleCheck(this)"><div class="pack-check"></div><span>Small first aid kit</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="hotels">
+  <p class="section-eyebrow">Where to stay</p>
+  <h2 class="section-title">Recommended <em>Stays</em></h2>
+  <div class="hotels-grid fade-in">
+    <div class="hotel-card">
+      <div class="hotel-city">Bangkok</div>
+      <div class="hotel-name">Boutique Riverside Hotel</div>
+      <div class="hotel-type">Riverside · Boutique</div>
+      <div class="hotel-why">The Salil sits right on the Chao Phraya with easy access to all Bangkok experiences — Chinatown, temples, floating markets, ICONSIAM and the Night Bazaar are all reachable by the free river boat shuttle.</div>
+    </div>
+    <div class="hotel-card">
+      <div class="hotel-city">Chiang Mai</div>
+      <div class="hotel-name">Eco-Lodge or Garden Hotel</div>
+      <div class="hotel-type">Old City Area · Eco-friendly</div>
+      <div class="hotel-why">Choose a property near the Old City moat — many boutique garden hotels here are sustainability-focused, which aligns perfectly with the elephant sanctuary visit. Look for open-air courtyards and local breakfast.</div>
+    </div>
+    <div class="hotel-card">
+      <div class="hotel-city">Phuket</div>
+      <div class="hotel-name">Beachfront Resort</div>
+      <div class="hotel-type">Nai Harn Beach · Beachfront</div>
+      <div class="hotel-why">Must have a pool for the birthday flower setup and direct beach access for the group dinner. Nai Harn is one of Phuket's most peaceful and beautiful beaches. Confirm the birthday pool setup with the concierge after booking.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="line-divider">
+
+<!-- TIPS -->
+<section id="tips">
+  <p class="section-eyebrow">Practical notes</p>
+  <h2 class="section-title">Before You <em>Go</em></h2>
+  <div class="tips-grid">
+    <div class="tip-card fade-in"><div class="tip-icon">🐘</div><div class="tip-title">Book the elephant sanctuary early</div><div class="tip-body">Elephant Nature Park August slots fill 6–8 weeks in advance. Book directly via elephantnaturepark.org. Avoid any operator that offers riding, shows, or performing elephants.</div></div>
+    <div class="tip-card fade-in"><div class="tip-icon">🌧</div><div class="tip-title">Work with the rain</div><div class="tip-body">August rain typically arrives in short afternoon bursts. Schedule outdoor activities — markets, parks, waterfalls — in the mornings. Keep indoor experiences for afternoons.</div></div>
+    <div class="tip-card fade-in"><div class="tip-icon">🌸</div><div class="tip-title">Birthday pool coordination</div><div class="tip-body">Contact the Phuket resort 3–4 weeks ahead, ask for the concierge team, and request lotus, orchid, and frangipani in the pool with her name in petals on the deck. The group chips in — budget ~$40–70 USD total.</div></div>
+    <div class="tip-card fade-in"><div class="tip-icon">🤿</div><div class="tip-title">Ethical snorkeling in Phuket</div><div class="tip-body">Look for operators that prohibit fish feeding and require reef-safe sunscreen. Racha Island and Phi Phi Leh have the healthiest reefs — avoid operators that offer fish feeding.</div></div>
+    <div class="tip-card fade-in"><div class="tip-icon">🍜</div><div class="tip-title">Jay Fai requires advance booking</div><div class="tip-body">Bangkok's most famous Michelin street stall books out weeks ahead. Reserve online as soon as your trip dates are confirmed. Worth every effort for the legendary crab omelet.</div></div>
+    <div class="tip-card fade-in"><div class="tip-icon">🎁</div><div class="tip-title">Gift ideas along the way</div><div class="tip-body">In Chiang Mai: commission silver jewelry or hand-painted silk from the Sunday Walking Street. The elephant adoption certificate, framed locally, is the most meaningful gift of the trip.</div></div>
+  </div>
+</section>
+
+<!-- FINAL PHOTO STRIP -->
+<div class="photo-strip">
+  <div class="photo-row">
+    <div class="photo-cell">
+      <img src="https://images.pexels.com/photos/1804177/pexels-photo-1804177.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Thailand temple" loading="lazy">
+      <div class="photo-caption">Chiang Mai · Temple at dusk</div>
+    </div>
+    <div class="photo-cell">
+      <img src="https://images.pexels.com/photos/1640773/pexels-photo-1640773.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Thai food" loading="lazy">
+      <div class="photo-caption">Bangkok · Street food</div>
+    </div>
+    <div class="photo-cell wide">
+      <img src="https://images.pexels.com/photos/1032650/pexels-photo-1032650.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Tropical beach sunset" loading="lazy">
+      <div class="photo-caption">Phuket · Sunset from the water</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-title">The 32nd birthday she always dreamed of</div>
+    
+    <div class="footer-sub">Thailand · August 2026 · 10 days · 3 cities · 10 days · unforgettable</div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  function showTab(e, id) {
+    document.querySelectorAll('.outfit-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.outfit-panel').forEach(p => p.classList.remove('active'));
+    e.target.classList.add('active');
+    document.getElementById('tab-' + id).classList.add('active');
+  }
+
+  function toggleCheck(item) { item.classList.toggle('checked'); }
+</script>
+</body>
+</html>
